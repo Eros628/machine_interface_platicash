@@ -16,60 +16,48 @@ class _DepositIntroState extends State<DepositIntro> {
   bool isOpen = false;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap:(){
-        setState(() {
-          isOpen = true;
-        });
-        Future.delayed(Duration(seconds: 5), (){
-          if(!mounted){ return;}
-          Navigator.pushNamed(context, '/deposit_main');
+    return PopScope(
+      canPop: false,
+      child: GestureDetector(
+        onTap:(){
+          setState(() {
+            isOpen = true;
+          });
+          Future.delayed(Duration(seconds: 5), (){
+            if(!mounted){ return;}
+            Navigator.pushNamed(context, '/deposit_main');
+      
+          });
+        },
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: Stack(
+            children: [
+              
+              Align(
+                alignment: Alignment.centerRight,
+                child: Hero(
+                  tag: "circle2",
+                  child: Container(width:  600.w,decoration: BoxDecoration(color: Color.fromARGB(255, 27, 75, 61), borderRadius:BorderRadius.only(bottomLeft: Radius.circular(100), topLeft: Radius.circular(100))  ),)),
+              ),
+              
 
-        });
-      },
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Container(height: 250.h,width: 280.w,decoration: BoxDecoration(color: Color.fromARGB(255, 27, 75, 61), borderRadius:BorderRadius.only(bottomRight: Radius.circular(200)) ),),
-            ),
-            // Curved green background at the bottom
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: Stack(children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(40, 10, 50,0),
-                    child: Hero(tag: "bottomup1",child: Row(crossAxisAlignment: CrossAxisAlignment.end,mainAxisAlignment: MainAxisAlignment.spaceBetween,children:[Image(image:AssetImage('assets/leaf2.png')), Image(image:AssetImage('assets/leaf1.png'))])),
-                  ),
-                  Hero(
-                    tag: "bottomup",
-                    child: ClipPath(
-                      clipper: BottomCurveClipper(),
-                      child: Container(
-                        color: Color.fromARGB(255, 27, 75, 61), // Your green color
-                        height: 1600.h,
-                      ),
-                    ),
+      
+              // Content
+              SingleChildScrollView(
+                  child: Padding(
+                      padding:EdgeInsets.fromLTRB(50.h,80.w,90.w, 0),
+                      child: Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                        Container(padding: EdgeInsets.fromLTRB(60.w, 0.h,50.w,10.h) ,
+                          child: Hero( tag:"logo",child: Image(image: AssetImage('assets/logo.png'),height: 300.w,)),
+                        ),
+                        SizedBox(width: isOpen? 208.w: 150.w,),
+                        BlinkingText(isOpen == true ? "OPENING       " : "START DEPOSIT", fontSize: 40.sp, color: Colors.white),
+                      ])
                   )
-                ])
-            ),
-
-            // Content
-            SingleChildScrollView(
-                child: Padding(
-                    padding:EdgeInsets.fromLTRB(50,200.h,50, 0),
-                    child: Column( mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                      Column(children: [Container(padding: EdgeInsets.fromLTRB(40, 0.h,50,10.h) ,
-                        child: Hero( tag:"logo",child: Image(image: AssetImage('assets/logo.png'),height: 600.h,)),
-                      )]),
-                      SizedBox(height: 750.h),
-                      BlinkingText(isOpen == true ? "OPENING" : "START DEPOSIT", fontSize: 70.sp, color: Colors.white),
-                    ])
-                )
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -91,87 +79,76 @@ class _DepositMainState extends State<DepositMain> {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(height: 250.h,width: 280.w,decoration: BoxDecoration(color: Color.fromARGB(255, 27, 75, 61), borderRadius:BorderRadius.only(bottomRight: Radius.circular(200)) ),),
-          ),
-          // Curved green background at the bottom
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: Stack(children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(40, 10, 50,0),
-                  child: Hero(tag: "bottomup1",child: Row(crossAxisAlignment: CrossAxisAlignment.end,mainAxisAlignment: MainAxisAlignment.spaceBetween,children:[Image(image:AssetImage('assets/leaf2.png')), Image(image:AssetImage('assets/leaf1.png'))])),
-                ),
-                Hero(
-                  tag: "bottomup",
-                  child: ClipPath(
-                    clipper: BottomCurveClipper(),
-                    child: Container(
-                      color: Color.fromARGB(255, 27, 75, 61), // Your green color
-                      height: 1600.h,
-                    ),
-                  ),
-                )
-              ])
-          ),
-
-          // Content
-          SingleChildScrollView(
-              child: Padding(
-                  padding:EdgeInsets.fromLTRB(0,200.h,0, 0),
-                  child: Column( mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                    Column(children: [Container(padding: EdgeInsets.fromLTRB(40, 0.h,50,10.h) ,
-                      child: Hero( tag:"logo",child: Image(image: AssetImage('assets/logo.png'),height: 600.h,)),
-                    )]),
-                    SizedBox(height: 320.h),
-                    Text("$count", style: TextStyle(fontSize: 100.sp, color: Colors.white),),
-                    Text("Plastic Bottle Collected", style: TextStyle(fontSize: 63.sp, color: Colors.white)),
-                    SizedBox(height: 370.h),
-                    BlinkingText("READY TO DEPOSIT",fontSize: 63.sp, color: Colors.white),
-                    SizedBox(height: 30.h,),
-                    Text("Place the bottle one at a time\n into the deposit slot", style: TextStyle(fontSize: 40.sp, color: Colors.white, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
-                    SizedBox(height: 180.h,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextButton(
-                            style: ButtonStyle(
-                                backgroundColor:WidgetStatePropertyAll(Colors.white),
-                                fixedSize: WidgetStatePropertyAll(Size(350.h, 50.w)),
-                                shape:WidgetStatePropertyAll(
-                                    RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(topRight: Radius.circular(12), bottomRight: Radius.circular(12))
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Stack(
+          children: [
+            Align(
+                alignment: Alignment.centerRight,
+                child: Hero(
+                  tag: "circle2",
+                  child: Container(width:  650.w,decoration: BoxDecoration(color: Color.fromARGB(255, 27, 75, 61), borderRadius:BorderRadius.only(bottomLeft: Radius.circular(100), topLeft: Radius.circular(100))  ),)),
+              ),
+      
+            // Content
+            SingleChildScrollView(
+                child: Padding(
+                    padding:EdgeInsets.fromLTRB(0,70.w,0, 0),
+                    child: Row( mainAxisAlignment: MainAxisAlignment.spaceAround, crossAxisAlignment: CrossAxisAlignment.center, children: [
+                      Column(children: [Container(padding: EdgeInsets.fromLTRB(40.w, 0.h,50.w,80.w) ,
+                        child: Hero( tag:"logo",child: Image(image: AssetImage('assets/logo.png'),height: 290.w,)),
+                      )]),
+                     
+                      Column(
+                        children: [
+                          Text("$count", style: TextStyle(fontSize: 40.sp, color: Colors.white),),
+                          Text("Plastic Bottle Collected", style: TextStyle(fontSize: 40.sp, color: Colors.white)),
+                          SizedBox(height: 290.h),
+                          BlinkingText("READY TO DEPOSIT",fontSize: 30.sp, color: Colors.white),
+                          SizedBox(height: 30.h,),
+                          Text("Place the bottle one at a time\n into the deposit slot", style: TextStyle(fontSize: 20.sp, color: Colors.white, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
+                          SizedBox(height: 180.h,),
+                          Row(
+                          spacing:100.w,
+                          children: [
+                            TextButton(
+                                style: ButtonStyle(
+                                    backgroundColor:WidgetStatePropertyAll(Colors.white),
+                                    fixedSize: WidgetStatePropertyAll(Size(150.w, 50.h)),
+                                    shape:WidgetStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10)
+                                        )
                                     )
-                                )
+                                ),
+                                onPressed: (){
+                                },
+                                child: Text("Cancel", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30.sp, color: Color.fromARGB(255, 27, 75, 61)),)),
+                            TextButton(
+                                style: ButtonStyle(
+                                  backgroundColor:WidgetStatePropertyAll(Colors.white),
+                                  fixedSize: WidgetStatePropertyAll(Size(150.w, 50.h)),
+                                  shape:WidgetStatePropertyAll(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10))
+                                  )
+                                ),
+        
+                                onPressed:(){
+                                    Navigator.pushNamed(context, '/payout', arguments: count);
+                                },
+                                child: Text("Payout", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30.sp, color: Color.fromARGB(255, 27, 75, 61))))
+                              ],
                             ),
-                            onPressed: (){
-                            },
-                            child: Text("Cancel", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50.sp, color: Color.fromARGB(255, 27, 75, 61)),)),
-                        TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:WidgetStatePropertyAll(Colors.white),
-                              fixedSize: WidgetStatePropertyAll(Size(350.h, 50.w)),
-                              shape:WidgetStatePropertyAll(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(12), bottomLeft: Radius.circular(12)))
-                              )
-                            ),
-
-                            onPressed:(){
-                                Navigator.pushNamed(context, '/payout', arguments: count);
-                            },
-                            child: Text("Payout", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50.sp, color: Color.fromARGB(255, 27, 75, 61))))
-                      ],
-                    ),
-                  ])
-              )
-          ),
-        ],
+                          ],
+                        ),
+                      ])
+                )
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -186,90 +163,81 @@ class PayoutScreen extends StatefulWidget {
 }
 
 class _PayoutScreenState extends State<PayoutScreen> {
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: Container(height: 250.h,width: 280.w,decoration: BoxDecoration(color: Color.fromARGB(255, 27, 75, 61), borderRadius:BorderRadius.only(bottomRight: Radius.circular(200)) ),),
-          ),
-          // Curved green background at the bottom
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: Stack(children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(40, 10, 50,0),
-                  child: Hero(tag: "bottomup1",child: Row(crossAxisAlignment: CrossAxisAlignment.end,mainAxisAlignment: MainAxisAlignment.spaceBetween,children:[Image(image:AssetImage('assets/leaf2.png')), Image(image:AssetImage('assets/leaf1.png'))])),
-                ),
-                Hero(
-                  tag: "bottomup",
-                  child: ClipPath(
-                    clipper: BottomCurveClipper(),
-                    child: Container(
-                      color: Color.fromARGB(255, 27, 75, 61), // Your green color
-                      height: 1600.h,
-                    ),
-                  ),
-                )
-              ])
-          ),
-
-          // Content
-          SingleChildScrollView(
-              child: Padding(
-                  padding:EdgeInsets.fromLTRB(0,200.h,0, 0),
-                  child: Column( mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                    Column(children: [Container(padding: EdgeInsets.fromLTRB(40, 0.h,50,10.h) ,
-                      child: Hero( tag:"logo",child: Image(image: AssetImage('assets/logo.png'),height: 600.h,)),
-                    )]),
-                    SizedBox(height: 320.h),
-                    Text("Plastic Bottle Collected:", style: TextStyle(fontSize: 60.sp, color: Colors.white)),
-                    Text("${widget.count} Bottles", style: TextStyle(fontSize: 70.sp, color: Colors.white)),
-                    SizedBox(height: 200.h),
-                    Text("Reward Earned:", style: TextStyle(fontSize: 63.sp, color: Colors.white)),
-                    SizedBox(height: 30.h,),
-                    Text("0 Pesos", style: TextStyle(fontSize: 63.sp, color: Colors.white)),
-                    SizedBox(height: 400.h,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+    final int points = widget.count * 1; 
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Stack(
+          children: [
+           Align(
+                alignment: Alignment.centerRight,
+                child: Hero(
+                  tag: "circle2",
+                  child: Container(width:  650.w,decoration: BoxDecoration(color: Color.fromARGB(255, 27, 75, 61), borderRadius:BorderRadius.only(bottomLeft: Radius.circular(100), topLeft: Radius.circular(100))  ),)),
+              ),
+      
+            // Content
+            SingleChildScrollView(
+                child: Padding(
+                    padding:EdgeInsets.fromLTRB(0,70.w,0, 0),
+                    child: Row( mainAxisAlignment: MainAxisAlignment.spaceAround, crossAxisAlignment: CrossAxisAlignment.center, children: [
+                      Column(children: [Container(padding: EdgeInsets.fromLTRB(40.w, 0.h,50.w,80.w) ,
+                        child: Hero( tag:"logo",child: Image(image: AssetImage('assets/logo.png'),height: 290.w,)),
+                      )]),
+                     
+                      Column(
+                        children: [
+                           Text("Plastic Bottle Collected", style: TextStyle(fontSize: 40.sp, color: Colors.white)),
+                          Text("${widget.count}", style: TextStyle(fontSize: 40.sp, color: Colors.white, fontWeight: FontWeight.normal)),
+                          SizedBox(height: 150.h,),
+                          Text("Reward Earned ", style: TextStyle(fontSize: 40.sp, color: Colors.white, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
+                          Text("$points Pesos ", style: TextStyle(fontSize: 40.sp, color: Colors.white, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
+                          SizedBox(height: 200.h,),
+                          Row(
+                          spacing:100.w,
+                          children: [
                             TextButton(
-                              style: ButtonStyle(
-                              backgroundColor:WidgetStatePropertyAll(Colors.white),
-                              fixedSize: WidgetStatePropertyAll(Size(350.w, 50.h)),
-                              shape:WidgetStatePropertyAll(
+                                style: ButtonStyle(
+                                    backgroundColor:WidgetStatePropertyAll(Colors.white),
+                                    fixedSize: WidgetStatePropertyAll(Size(150.w, 50.h)),
+                                    shape:WidgetStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10)
+                                        )
+                                    )
+                                ),
+                                onPressed: (){
+                                  Navigator.pop(context);
+                                },
+                                child: Text("Cancel", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30.sp, color: Color.fromARGB(255, 27, 75, 61)),)),
+                            TextButton(
+                                style: ButtonStyle(
+                                  backgroundColor:WidgetStatePropertyAll(Colors.white),
+                                  fixedSize: WidgetStatePropertyAll(Size(150.w, 50.h)),
+                                  shape:WidgetStatePropertyAll(
                                   RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(topRight: Radius.circular(12), bottomRight: Radius.circular(12))
+                                    borderRadius: BorderRadius.circular(10))
                                   )
-                              )
+                                ),
+        
+                                onPressed:(){
+                                    Navigator.pushNamed(context, '/reward_option', arguments: widget.count);
+                                },
+                                child: Text("Confirm", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30.sp, color: Color.fromARGB(255, 27, 75, 61))))
+                              ],
                             ),
-                            onPressed: (){
-                              Navigator.pop(context);
-                            },
-                            child: Text("Back", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50.sp, color: Color.fromARGB(255, 27, 75, 61)),)),
-                        TextButton(
-                            style: ButtonStyle(
-                                backgroundColor:WidgetStatePropertyAll(Colors.white),
-                                fixedSize: WidgetStatePropertyAll(Size(350.w, 50.h)),
-                                shape:WidgetStatePropertyAll(
-                                  RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(12), bottomLeft: Radius.circular(12))
-                                  )
-                                )
-                            ),
-                            onPressed:(){
-                                Navigator.pushNamed(context, '/reward_option');
-                            },
-                            child: Text("Claim", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50.sp, color: Color.fromARGB(255, 27, 75, 61))))
-                      ],
-                    ),
-                  ])
-              )
-          ),
-        ],
+                          ],
+                        ),
+                      ])
+                )
+            ),
+          ],
+        ),
       ),
     );
   }

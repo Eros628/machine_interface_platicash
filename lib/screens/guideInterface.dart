@@ -17,52 +17,52 @@ class _GuideScreenState extends State<GuideScreen> {
 
   List<Widget>get steps => [
     Column(crossAxisAlignment: CrossAxisAlignment.center,children: [Container(padding: EdgeInsets.fromLTRB(0.w, 300.h,0.w,50.h) ,
-      child: Hero(tag:"logo",child: Image(image: AssetImage('assets/logo.png'), height:900.h,)),
-    ),Text("HOW TO USE THE MACHINE?", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 55.sp, color: Colors.black))]),
+      child: Hero(tag:"logo",child: Image(image: AssetImage('assets/logo.png'), height:230.w,)),
+    ),Text("HOW TO USE THE MACHINE?", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 35.sp, color: Colors.black))]),
 
     Column(crossAxisAlignment: CrossAxisAlignment.center,children: [
-      Container(padding: EdgeInsets.fromLTRB(0.w, 300.h,0.w,30.h) ,
-        child: Image(image: AssetImage('assets/step1.png'), height:700.h,)),
-      Text("STEP 1:", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 55.sp, color: Colors.black)),
-      Text("PREPARE YOUR BOTTLE", style: TextStyle(fontSize: 55.sp, fontWeight: FontWeight.w700, color: Colors.black)),
+      Container(padding: EdgeInsets.fromLTRB(0.h, 370.h,0.h,50.h) ,
+        child: Image(image: AssetImage('assets/step1.png'), height:170.w,)),
+      Text("STEP 1:", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 30.sp, color: Colors.black)),
+      Text("PREPARE YOUR BOTTLE", style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700, color: Colors.black)),
       Padding(
         padding: const EdgeInsets.only(top: 10),
-        child: Text("Make sure the bottle is empty", style: TextStyle(fontSize: 35.sp, color: Colors.black, fontWeight: FontWeight.normal)),
+        child: Text("Make sure the bottle is empty", style: TextStyle(fontSize: 20.sp, color: Colors.black, fontWeight: FontWeight.normal)),
       )
     ]),
 
-    Column(children: [Container(padding: EdgeInsets.fromLTRB(0.w, 300.h,0.w,50.h) ,
-      child: Image(image: AssetImage('assets/step2.png'),height:600.h),
-    ),Text("STEP 2:", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 55.sp, color: Colors.black)),
-      Text("INSERT THE BOTTLE", style: TextStyle(fontSize: 55.sp, fontWeight: FontWeight.w700, color: Colors.black)),
+    Column(children: [Container(padding: EdgeInsets.fromLTRB(0.h, 370.h,0.h,50.h) ,
+      child: Image(image: AssetImage('assets/step2.png'),height:170.w),
+    ),Text("STEP 2:", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 30.sp, color: Colors.black)),
+      Text("INSERT THE BOTTLE", style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700, color: Colors.black)),
       Padding(
         padding: const EdgeInsets.only(top: 10),
-        child: Text("Place the bottle one at a time into the deposit slot.", style: TextStyle(fontSize: 35.sp, color: Colors.black, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
+        child: Text("Place the bottle one at a time into the deposit slot.", style: TextStyle(fontSize: 20.sp, color: Colors.black, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
       )
 
     ]),
 
 
-    Column(children: [Container(padding: EdgeInsets.fromLTRB(0.w, 350.h,0.w,50.h) ,
-      child: Image(image: AssetImage('assets/step3.png'),height:570.h,),
-    ),Text("STEP 3:", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 55.sp, color: Colors.black)),
-      Text("CHOOSE YOUR REWARD METHOD", style: TextStyle(fontSize: 45.sp, fontWeight: FontWeight.w700, color: Colors.black), textAlign: TextAlign.center,),
+    Column(children: [Container(padding: EdgeInsets.fromLTRB(0.h, 370.h,0.h,50.h) ,
+      child: Image(image: AssetImage('assets/step3.png'),height:170.w,),
+    ),Text("STEP 3:", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 30.sp, color: Colors.black)),
+      Text("CHOOSE YOUR REWARD METHOD", style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700, color: Colors.black), textAlign: TextAlign.center,),
       Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Padding(
           padding: const EdgeInsets.only(left: 50, right: 50),
-          child: Text("Choose to receive your reward either as cash directly or as points added to your app wallet.", style: TextStyle(fontSize: 35.sp, color: Colors.black, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
+          child: Text("Choose to receive your reward either as cash directly \nor as points added to your app wallet.", style: TextStyle(fontSize: 20.sp, color: Colors.black, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
         ),
       )
     ]),
 
-    Column(children: [Container(padding: EdgeInsets.fromLTRB(0.w, 300.h,0.w,30.h) ,
-      child: Image(image: AssetImage('assets/step4.png'), height: 700.h,),
-    ),Text("STEP 4:", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 55.sp, color: Colors.black)),
-      Text("CONFIRM & DONE!", style: TextStyle(fontSize: 55.sp, fontWeight: FontWeight.w700, color: Colors.black), textAlign: TextAlign.center,),
+    Column(children: [Container(padding: EdgeInsets.fromLTRB(0.h, 370.h,0.h,50.h) ,
+      child: Image(image: AssetImage('assets/step4.png'), height: 170.w,),
+    ),Text("STEP 4:", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 30.sp, color: Colors.black)),
+      Text("CONFIRM & DONE!", style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700, color: Colors.black), textAlign: TextAlign.center,),
       Padding(
         padding: const EdgeInsets.only(top: 10),
-        child: Text("Tap Confirm and\n Receive Your Rewards", style: TextStyle(fontSize: 35.sp, color: Colors.black, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
+        child: Text("Tap Confirm and\n Receive Your Rewards", style: TextStyle(fontSize: 20.sp, color: Colors.black, fontWeight: FontWeight.normal), textAlign: TextAlign.center,),
       )])
   ];
 
@@ -83,92 +83,94 @@ class _GuideScreenState extends State<GuideScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return PopScope(
+      canPop: false,
+      child: GestureDetector(
+      
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: Stack(
+            children: [
 
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(height: 240.h,width: 260.w,decoration: BoxDecoration(color: Color.fromARGB(255, 27, 75, 61), borderRadius:BorderRadius.only(bottomLeft: Radius.circular(200)) ),),
-            )  ,
-            // Curved green background at the bottom
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: Stack(children: [
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(40.w, 10, 50.w,0),
-                    child: Hero(tag:"bottomup1",child: Row(crossAxisAlignment: CrossAxisAlignment.end,mainAxisAlignment: MainAxisAlignment.spaceBetween,children:[Image(image:AssetImage('assets/leaf2.png')), Image(image:AssetImage('assets/leaf1.png'))])),
+              Row(  children: [
+                 
+                Expanded(
+                  child: PageView.builder(
+                    controller: _pageController,
+                    physics: NeverScrollableScrollPhysics(),  // disable swipe
+                    itemCount: steps.length,
+                    itemBuilder: (_, i) => steps[i],
+                    onPageChanged: (i) => setState(() => _currentIndex = i),
                   ),
-                  Hero(
-                    tag: "bottomup",
-                    child: ClipPath(
-                      clipper: BottomCurveClipper(),
-                      child: Container(
-                        color: Color.fromARGB(255, 27, 75, 61), // Your green color
-                        height: 1000.h,
-                      ),
-                    ),
-                  )
-                ])
-            ),
-
-            // Content
-            Column( mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-              Expanded(
-                child: PageView.builder(
-                  controller: _pageController,
-                  physics: NeverScrollableScrollPhysics(),  // disable swipe
-                  itemCount: steps.length,
-                  itemBuilder: (_, i) => steps[i],
-                  onPageChanged: (i) => setState(() => _currentIndex = i),
                 ),
+                
+                ]
               ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0,0.h,0,160.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                        style: ButtonStyle(
-                            backgroundColor:WidgetStatePropertyAll(Colors.white),
-                            fixedSize: WidgetStatePropertyAll(Size(350.h, 50.w)),
-                            shape:WidgetStatePropertyAll(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(topRight: Radius.circular(12), bottomRight: Radius.circular(12))
-                                )
-                            )
-                        )  ,
-                        onPressed: (){
-                          Navigator.pushNamed(context, '/deposit');
-                        },
-                        child: Text("Skip", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50.sp, color:  Color.fromARGB(255, 27, 75, 61)),)),
-                    TextButton(
-                        style: ButtonStyle(
-                            backgroundColor:WidgetStatePropertyAll(Colors.white),
-                            fixedSize: WidgetStatePropertyAll(Size(350.h, 50.w)),
-                            shape:WidgetStatePropertyAll(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(12), bottomLeft: Radius.circular(12))
-                                )
-                            )
-                        ),
-                        onPressed: _currentIndex != steps.length - 1 ? _nextPage: (){
-                          Navigator.pushNamed(context, '/deposit');
-                        },
-                        child: Text( _currentIndex == steps.length - 1
-                            ? "Get Started"
-                            : "Next", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 50.sp, color:  Color.fromARGB(255, 27, 75, 61))),
-                        
-                      
+             Align(
+                alignment: Alignment.centerLeft,
+                child: Hero(
+                  tag: "circle1",
+                  child: Container(width: 180.w,decoration: BoxDecoration(color: Color.fromARGB(255, 27, 75, 61), borderRadius:BorderRadius.only(bottomRight: Radius.circular(200), topRight: Radius.circular(200)) ),)),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Hero(
+                  tag: "circle2",
+                  child: Container(width:  180.w,decoration: BoxDecoration(color: Color.fromARGB(255, 27, 75, 61), borderRadius:BorderRadius.only(bottomLeft: Radius.circular(200), topLeft: Radius.circular(200))  ),)),
+              ),
 
-                    )
-                  ],
+              Align(
+                alignment: Alignment.centerLeft,
+                child:TextButton(
+                          style: ButtonStyle(
+                            padding: WidgetStatePropertyAll(EdgeInsets.only(top: 30, left: 20)),
+                              fixedSize: WidgetStatePropertyAll(Size(120.w, 900.h)),
+                          ),
+                          onPressed: (){
+                            if(_currentIndex == steps.length - 1){
+                              return;
+                            }
+                            else{
+                              Navigator.pushNamed(context, '/deposit');
+                            }
+                            
+                          },
+                          child: Column( children: [
+                            Icon(Icons.skip_next, color: _currentIndex == steps.length - 1?  Color.fromARGB(255, 27, 75, 61): Colors.white, size: 50,),
+                             Text("Skip", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25.sp, color:_currentIndex == steps.length - 1?  Color.fromARGB(255, 27, 75, 61):  Colors.white),)
+                          ]))
+              ),
+
+              Align(
+
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                    style: ButtonStyle(
+                          padding: WidgetStatePropertyAll(EdgeInsets.only(top: 30, right: 20)),
+                            fixedSize: WidgetStatePropertyAll(Size(150.w, 900.h)),
+                        ),
+                    onPressed: _currentIndex != steps.length - 1 ? _nextPage: (){
+                      Navigator.pushNamed(context, '/deposit');
+                    },
+                    child: Column(
+                      children: [ Icon(Icons.arrow_right, color: Colors.white, size: 50,),
+                        Text( _currentIndex == steps.length - 1
+                            ? "Get Started"
+                            : "Next", style: TextStyle(fontWeight: FontWeight.bold,fontSize: _currentIndex != steps.length - 1? 25.sp : 20.sp, color:  Colors.white)),
+                      ],
+                    ),
+                    
+                  
+                  
                 ),
               )
-              ]
-            )],
+             
+              // Curved green background at the bottom
+             
+      
+              // Content
+              ],
+          ),
         ),
       ),
     );
